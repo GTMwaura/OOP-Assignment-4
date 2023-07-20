@@ -1,0 +1,320 @@
+
+Object Oriented Programming
+Assignment 4
+Admin No. 165693
+
+20/07/23
+
+Question One
+
+import java.util.Scanner;
+
+public class StudentGrades {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Ask for student's full name
+        System.out.print("Enter student's full name: ");
+        String fullName = scanner.nextLine();
+
+        // Initialize arrays to store subject names and marks
+        String[] subjects = new String[5];
+        int[] marks = new int[5];
+
+        // Ask for subject names and marks
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Enter subject " + (i + 1) + " name: ");
+            subjects[i] = scanner.nextLine();
+
+            System.out.print("Enter marks for subject " + (i + 1) + ": ");
+            marks[i] = Integer.parseInt(scanner.nextLine());
+        }
+
+        scanner.close();
+
+        // Output the student's name, subjects, marks, and grades
+        System.out.println("\nStudent's Name: " + fullName);
+        System.out.println("Subject\t\tMarks\tGrade");
+        System.out.println("-------\t\t-----\t-----");
+
+        for (int i = 0; i < 5; i++) {
+            String grade = calculateGrade(marks[i]);
+            System.out.println(subjects[i] + "\t\t" + marks[i] + "\t" + grade);
+        }
+    }
+
+    // Helper method to calculate the grade based on marks
+    private static String calculateGrade(int marks) {
+        if (marks >= 90) {
+            return "A+";
+        } else if (marks >= 80) {
+            return "A";
+        } else if (marks >= 70) {
+            return "B";
+        } else if (marks >= 60) {
+            return "C";
+        } else if (marks >= 50) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+}
+
+Question Two
+
+import java.util.Scanner;
+
+public class LabeledUnlabeledBreakDemo {
+
+    public static void main(String[] args) {
+        // Labeled break statement
+        labeledBreakDemo();
+
+        // Unlabeled break statement
+        unlabeledBreakDemo();
+    }
+
+    public static void labeledBreakDemo() {
+        // Using a label to identify the loop
+        outerLoop: for (int i = 1; i <= 3; i++) {
+            for (int j = 1; j <= 3; j++) {
+                if (i == 2 && j == 2) {
+                    System.out.println("Labeled break: Loop terminated at i=" + i + ", j=" + j);
+                    // Using labeled break to terminate the outer loop when i=2 and j=2
+                    break outerLoop;
+                }
+                System.out.println("i=" + i + ", j=" + j);
+            }
+        }
+    }
+
+    public static void unlabeledBreakDemo() {
+        // Unlabeled break statement
+        for (int i = 1; i <= 3; i++) {
+            for (int j = 1; j <= 3; j++) {
+                if (i == 2 && j == 2) {
+                    System.out.println("Unlabeled break: Loop terminated at i=" + i + ", j=" + j);
+                    // Using unlabeled break to terminate the inner loop when i=2 and j=2
+                    break;
+                }
+                System.out.println("i=" + i + ", j=" + j);
+            }
+        }
+    }
+}
+
+Question Three
+
+Branching statements are captions that allow the flow of execution to jump to a different part of the program. 
+The common branching statements used within other control structures include: break, continue, return, and goto. 
+
+Question Four
+
+import java.util.Scanner;
+
+public class MaxNumberFinder {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second number: ");
+        int num2 = scanner.nextInt();
+
+        int maxNumber;
+
+        // Using Switch...Case to find the maximum number
+        switch (num1 > num2 ? 1 : (num1 < num2 ? 2 : 0)) {
+            case 1:
+                maxNumber = num1;
+                break;
+            case 2:
+                maxNumber = num2;
+                break;
+            default:
+                System.out.println("Both numbers are equal.");
+                return;
+        }
+
+        System.out.println("The maximum number is: " + maxNumber);
+    }
+}
+
+Question Five
+
+public class StudentGradeProgram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the full name of the student: ");
+        String fullName = scanner.nextLine();
+
+        System.out.print("Enter the score: ");
+        int score = scanner.nextInt();
+
+        String grade;
+
+        if (score >= 70) {
+            grade = "A";
+        } else if (score >= 60) {
+            grade = "B";
+        } else if (score >= 50) {
+            grade = "C";
+        } else if (score >= 40) {
+            grade = "D";
+        } else if (score >= 0 && score < 40) {
+            grade = "F";
+        } else {
+            grade = "Invalid";
+        }
+
+        System.out.println("Full Name: " + fullName);
+        System.out.println("Grade: " + grade);
+
+        scanner.close();
+    }
+}
+
+Question Six
+
+public class ForLoopExample {
+    public static void main(String[] args) {
+        // Using a for loop to output the numbers
+        for (int i = 12; i <= 28; i += 2) {
+            System.out.print(i);
+            if (i < 28) {
+                System.out.print(", ");
+            }
+        }
+    }
+}
+
+Question Seven
+
+public class SumOfNumbers {
+    public static void main(String[] args) {
+        int start = 20;
+        int end = 25;
+        int sum = 0;
+
+        for (int i = start; i <= end; i++) {
+            sum += i;
+        }
+
+        System.out.println("The sum of numbers between " + start + " and " + end + " is: " + sum);
+    }
+}
+
+Question Eight
+
+public class EvenNumbers {
+    public static void main(String[] args) {
+        int number = 12;
+        
+        System.out.println("Even numbers from 12 to 50:");
+        
+        do {
+            if (number % 2 == 0) {
+                System.out.print(number + " ");
+            }
+            number++;
+        } while (number <= 50);
+        
+        System.out.println(); // Print a new line after the loop finishes
+    }
+}
+
+Question Nine
+
+public class SumBetweenNumbers {
+    public static void main(String[] args) {
+        int start = 20;
+        int end = 25;
+        int sum = 0;
+        int currentNumber = start;
+
+        do {
+            sum += currentNumber;
+            currentNumber++;
+        } while (currentNumber <= end);
+
+        System.out.println("The sum of numbers between " + start + " and " + end + " is: " + sum);
+    }
+}
+
+Question Ten
+
+import java.util.Scanner;
+
+public class SumOfIntegers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int sum = 0;
+        int number;
+
+        do {
+            System.out.print("Enter an integer (enter 0 to stop): ");
+            number = scanner.nextInt();
+            sum += number;
+        } while (number != 0);
+
+        System.out.println("Sum of the entered integers: " + sum);
+        scanner.close();
+    }
+}
+
+Question Eleven
+
+public class PrimeNumbers {
+    public static void main(String[] args) {
+        int number = 2;
+
+        System.out.println("Prime numbers between 0 and 100:");
+        while (number <= 100) {
+            if (isPrime(number)) {
+                System.out.print(number + " ");
+            }
+            number++;
+        }
+    }
+
+    // Helper method to check if a number is prime
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+
+        if (num == 2) {
+            return true;
+        }
+
+        // Check if the number is divisible by any number from 2 to its square root
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+Question Twelve
+
+public class SumOfOddNumbers {
+    public static void main(String[] args) {
+        int num = 1;
+        int sum = 0;
+
+        while (num <= 50) {
+            if (num % 2 != 0) { // Check if the number is odd
+                sum += num;     // Add the odd number to the sum
+            }
+            num++; // Move to the next number
+        }
+
+        System.out.println("The sum of odd numbers from 1 to 50 is: " + sum);
+    }
+}
